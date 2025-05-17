@@ -17,7 +17,8 @@ public class CustomersController(DataContext context) : BaseApiController
         return customers;
     }
 
-    [HttpGet("{id:int}")]     
+
+    [HttpGet("findcustomer/{id:int}")]     
     public async Task<ActionResult<AppCustomer>> GetCustomers(int id) 
     {
         var customer = await context.Customers.FindAsync(id);
@@ -25,4 +26,5 @@ public class CustomersController(DataContext context) : BaseApiController
         if(customer == null) return NotFound();
         return customer;
     }
+    
 }
