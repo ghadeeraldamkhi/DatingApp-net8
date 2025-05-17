@@ -1,0 +1,51 @@
+<div class="container" style="margin-top: 100px; margin-bottom: 100px;">
+    <div class="row">
+        <div class="col">
+            <form #findcustForm="ngForm" (ngSubmit)="findCustomer()" class="d-flex" autocomplete="off">
+                <input id="custId" name="custId" [(ngModel)]="custId" class="form-control me-2" placeholder="Customer ID" required 
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                <button class="btn btn-outline-success" type="submit">Find Customer By Id</button>
+            </form>
+        </div>
+    </div>
+    
+
+
+
+    <table class="table table-bordered" style="margin-top: 10px; margin-bottom: 10px;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer Name</th>
+                <th>Customer Number</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{customers.id}}</td>
+                <td>{{customers.customerName}}</td>
+                <td>{{customers.customerNum}}</td>
+                <td>{{customers.dateOfBirth}}</td>
+                <td>{{customers.gender}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+@if (validationErrors.length > 0) {
+    <div class="alert alert-danger" style="margin-top: 10px; margin-bottom: 10px;">
+        @for (err of validationErrors; track validationErrors.length) {
+    
+        <ul>
+            <li>{{ err }}</li>
+        </ul>
+    
+        }
+    
+    </div>
+    
+    }

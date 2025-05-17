@@ -1,0 +1,42 @@
+@if (showForm) {
+<div class="row">
+    <div class="col">
+        <form #updatecustForm="ngForm" (ngSubmit)="updateCustomer()" class="d-flex" autocomplete="off">
+            <input name="customername" [(ngModel)]="model.customerName" class="form-control me-2" required >
+            <input name="customernum" [(ngModel)]="model.customerNum" class="form-control me-2" placeholder="Customer Number" required pattern="^\d{9}$" oninput="this.value = this.value.replace(/[^0-9]/g, '')" >
+            <input name="dateofbirth" [(ngModel)]="model.dateofbirth" class="form-control me-2" type="date" required>
+            <input name="gender" [(ngModel)]="model.gender" class="form-control me-2" placeholder="Gender" required oninput="this.value = this.value.replace(/[^MFmf]/g, '')" type="text" maxlength="1">
+            <button class="btn btn-outline-success" type="submit">Update Customer Details</button>
+        </form>
+    </div>
+</div>
+}
+
+
+@if (validationErrors.length > 0) {
+<div class="alert alert-danger" style="margin-top: 10px; margin-bottom: 10px;">
+    @for (err of validationErrors; track validationErrors.length) {
+
+    <ul>
+        <li>{{ err }}</li>
+    </ul>
+
+    }
+
+</div>
+
+}
+
+@if (successMessage.length > 0) {
+    <div class="alert alert-success" style="margin-top: 10px; margin-bottom: 10px;">
+        @for (succ of successMessage; track successMessage.length) {
+        
+        <ul>
+            <li>{{ succ }}</li>
+        </ul>
+    
+        }
+    
+    </div>
+    
+    }

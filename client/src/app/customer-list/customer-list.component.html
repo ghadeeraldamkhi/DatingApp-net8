@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 100px; margin-bottom: 100px;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer Name</th>
+                <th>Customer Number</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (cust of customers; track customers.id) {
+
+            <tr>
+                <td>{{cust.id}}</td>
+                <td>{{cust.customerName}}</td>
+                <td>{{cust.customerNum}}</td>
+                <td>{{cust.dateOfBirth}}</td>
+                <td>{{cust.gender}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="editCustomer(cust.id)">Edit</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
